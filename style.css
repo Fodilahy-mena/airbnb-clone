@@ -1,0 +1,33 @@
+html {
+    font-size: 10px;
+    font-family: Montserrat;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(244, 244, 244);
+    color: #333;
+}
+
+body > header {
+    max-width: 80%;
+    padding: 0;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin: 0 auto;
+}
+#root {
+    max-width: 80%;
+    margin: 0 auto;
+}
+img {
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+}
