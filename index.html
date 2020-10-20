@@ -16,7 +16,31 @@
   </head>
   <body>
     <header>
-      <h1>WindBNB Challenge</h1>
+      <h1>
+        <a href="/windbnb--home--logo">
+          <img class="home--logo" src="./logo.svg" alt="windbnb home">
+        </a>
+      </h1>
+      <form class="form">
+        <fieldset>
+          <select class="filter" type="text" value="Helsinki, Finland" name="filter" id="filter">
+            <option value="Helsinki, Finland">Helsinki, Finland</option>
+            <option value="Turku, Finland">Turku</option>
+            <option value="Vaasa, Finland">Vaasa</option>
+            <option value="Oulu, Finland">Oulu</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <select type="button" class="add" type="text" id="add">
+            <option value="">Add guest</option>
+            <option value="Vaasa, Finland">Vaasa</option>
+            <option value="Oulu, Finland">Oulu</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <input id="search" class="search" type="search" placeholder=" ">
+        </fieldset>
+      </form>
     </header>
     <div id="root">
       

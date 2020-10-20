@@ -1,14 +1,22 @@
 import React from 'react'
 
-function WindBnb({photo, beds, city}) {
+function WindBnb({ beds, photo, city, country,  maxGuests, rating ,superHost, title, type}) {
+    console.log(country);
     return (
-        <div>
-            <p>{city}</p>
+        <div className="bnb--card">
             <img 
             className="card--image" 
             src={photo}
             alt={'poster'}
             />
+            <article>
+                <div className="superhost">
+                    {!superHost ? <button className="btn--superhost">Super host</button> : ''}
+                    <p className="bnb--type">{type} {beds ? beds + ` ${beds <= 1 ? 'bed' : 'beds'}` : ''}</p>
+                    <span className="rating">{rating}</span>
+                </div>
+                <p className="bnb--desc">{title}</p>
+            </article>
         </div>
     )
 }
