@@ -28306,9 +28306,12 @@ function WindBnb({
   rating,
   superHost,
   title,
-  type
+  type,
+  length
 }) {
-  console.log(country);
+  const itemLength = document.querySelector('.length');
+  itemLength.innerHTML = length; // console.log(JSON.stringify(maxGuests));
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "bnb--card"
   }, /*#__PURE__*/_react.default.createElement("img", {
@@ -28480,7 +28483,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _WindBnb = _interopRequireDefault(require("./WindBnb"));
 
@@ -28488,12 +28491,47 @@ var _stays = _interopRequireDefault(require("../stays.json"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 console.log(_stays.default);
+const input = document.querySelector('.search');
+const select = document.querySelector('.filter');
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Stays in Finland")), /*#__PURE__*/_react.default.createElement("div", {
+  const [stays, setStays] = (0, _react.useState)([]);
+  const [cities, setCities] = (0, _react.useState)(''); // search filter
+
+  const [titles, setTitles] = (0, _react.useState)('');
+  const [types, setTypes] = (0, _react.useState)(""); // const [maxNumberGuests, setMaxGuests] = useState('');
+
+  function fetchStays() {
+    const res = _stays.default;
+    console.log(res);
+    setStays(res);
+  }
+
+  (0, _react.useEffect)(() => {
+    fetchStays();
+  }, []);
+
+  function filterCity(e) {
+    e.preventDefault();
+    console.log(e.target.value);
+    setCities(e.target.value);
+    setTitles(e.target.value);
+    setTypes(e.target.value); // setMaxGuests(e.target.value);
+  }
+
+  select.addEventListener('change', filterCity);
+  input.addEventListener('keyup', filterCity);
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Stays in Finland"), /*#__PURE__*/_react.default.createElement("p", {
+    className: "length"
+  })), /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, _stays.default.map(stay => /*#__PURE__*/_react.default.createElement(_WindBnb.default, {
+  }, stays.filter(stay => stay.city.toLowerCase().includes(cities.toLowerCase()) || stay.title.toLowerCase().includes(titles.toLowerCase()) || stay.type.toLowerCase().includes(types.toLowerCase()) // || stay.maxGuests.toLowerCase().includes(maxNumberGuests.toLowerCase())
+  ).map((stay, i) => /*#__PURE__*/_react.default.createElement(_WindBnb.default, {
     beds: stay.beds,
     key: stay.photo,
     photo: stay.photo,
@@ -28503,7 +28541,8 @@ function App() {
     rating: stay.rating,
     superHost: stay.superHost,
     title: stay.title,
-    type: stay.type
+    type: stay.type,
+    length: i + 1 <= 1 ? i + 1 + " stay" : i + 1 + " stays"
   }))));
 }
 
@@ -28519,26 +28558,6 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 var _App = _interopRequireDefault(require("./Components/App"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const input = document.querySelector('.search');
-
-function filter() {
-  let keyWord = document.querySelector('.search').value;
-  let stays = document.querySelector('.container');
-
-  for (let i = 0; i < stays.length; i++) {
-    let txt = stays.divs[i].text;
-
-    if (!txt.match(keyWord)) {
-      $(stays.divs[i]).attr('sisplay', 'none').hide();
-    } else {
-      $(stays.divs).removeAttr('display').show();
-    }
-  }
-}
-
-input.addEventListener('change', filter);
-input.addEventListener('keyup', filter);
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root'));
 },{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./Components/App":"Components/App.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -28569,7 +28588,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51911" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65405" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

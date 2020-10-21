@@ -24,18 +24,34 @@
       <form class="form">
         <fieldset>
           <select class="filter" type="text" value="Helsinki, Finland" name="filter" id="filter">
-            <option value="Helsinki, Finland">Helsinki, Finland</option>
-            <option value="Turku, Finland">Turku</option>
-            <option value="Vaasa, Finland">Vaasa</option>
-            <option value="Oulu, Finland">Oulu</option>
+            <option value="">--choose a city name--</option>
+            <option value="Helsinki">Helsinki</option>
+            <option value="Turku">Turku</option>
+            <option value="Vaasa">Vaasa</option>
+            <option value="Oulu">Oulu</option>
           </select>
         </fieldset>
         <fieldset>
-          <select type="button" class="add" type="text" id="add">
-            <option value="">Add guest</option>
-            <option value="Vaasa, Finland">Vaasa</option>
-            <option value="Oulu, Finland">Oulu</option>
-          </select>
+          <div type="button" class="add dropdown" id="add">
+            <input type="checkbox" id="dropdown_checkbox">
+            <label for="dropdown_checkbox" class="dropdown_trigger">
+              All blogs
+            </label>
+            <div class="dropdown_content">
+              <ul>
+                <li>
+                  <a href="about-my-village.html">
+                    Latest blog
+                  </a>
+                </li>
+                <li>
+                  <a href="about-myself.html">
+                    Older blog
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </fieldset>
         <fieldset>
           <input id="search" class="search" type="search" placeholder=" ">

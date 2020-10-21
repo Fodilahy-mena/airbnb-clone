@@ -41,9 +41,9 @@ body > header > h1 {
 }
 
 
-.form:hover {
+/* .form:hover {
     max-width: 100%;
-}
+} */
 fieldset {
     margin: 0;
     padding: 0;
@@ -56,7 +56,7 @@ fieldset * {
     padding: 0;
     margin: 0;
 }
-fieldset > input, fieldset > select {
+fieldset > input, fieldset > select, .dropdown {
     padding: 1rem;
     border: none;
     max-width: 100%;
@@ -180,6 +180,16 @@ article {
     justify-content: space-between;
 }
 
+#root header {
+    display: flex;
+    justify-content: space-between;
+}
+.length {
+    height: max-content;
+    position: relative;
+    top: 8px;
+}
+
 @media (min-width: 786px) {
     /* .container {
         display: table;
@@ -191,3 +201,89 @@ article {
         display: table-row;
     } */
 }
+
+
+
+.dropdown {
+    position: relative;
+  }
+  .dropdown [type="checkbox"] {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+  }
+  .dropdown_trigger {
+    color: white;
+   background-color: green;
+   font-size: 1rem;
+   text-transform: uppercase;
+   display: inline-block;
+   padding: 1rem;
+   position: relative;
+   padding-inline-end: 3rem;
+   font-weight: 700;
+   border-radius: 0.25rem;
+   box-shadow: 2px 2px 2px 2px white;
+
+  }
+  .dropdown_trigger::before {
+    position: absolute;
+    content: "";
+    height: 0;
+    width: 0;
+    top: 50%;
+    margin-top: -0.3rem;
+    right: 1rem;
+  }
+  
+  .dropdown_content {
+    position: absolute;
+  
+  }
+  .dropdown_content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul {
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.2);
+    border-radius: 5px;
+  }
+  .dropdown_content a {
+    display: block;
+    padding: 0.25rem 0.25rem;
+    color: brown;
+    text-decoration: none;
+    transition: 0.3s;
+    
+  }
+  .dropdown_content a:hover {
+    background: black;
+    color: yellow;
+  }
+  
+  
+  /*Claused state*/
+  .dropdown_trigger::before {
+    transition: border .3s;
+    border-color: currentColor transparent transparent transparent;
+    border-style: solid;
+    border-width: 0.6rem 0.5rem 0 0.5rem;
+  
+  }
+  
+  .dropdown_content {
+    display: none;
+  }
+  [type="checkbox"]:checked ~ .dropdown_trigger::before {
+    border-color: transparent transparent currentColor transparent;
+    border-style: solid;
+    border-width: 0 0.5rem 0.6rem 0.5rem;
+  
+  }
+  [type="checkbox"]:checked ~ .dropdown_content {
+    display: block;
+  }
+  
