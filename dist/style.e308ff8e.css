@@ -96,6 +96,14 @@ fieldset > #search:hover {
     /* for Chrome */
     -webkit-appearance: none;
 }
+
+.add > option:last-child {
+    color: red;
+    font-size: 8px;
+}
+.add > option:first-child {
+    font-size: 8px;
+}
   
 /* For IE10 */
 .filter::-ms-expand , .add::-ms-expand {
@@ -201,5 +209,7 @@ article {
         display: table-row;
     } */
 }
+
+
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

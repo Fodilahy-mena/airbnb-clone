@@ -28498,13 +28498,16 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 console.log(_stays.default);
 const input = document.querySelector('.search');
 const select = document.querySelector('.filter');
+const addFilter = document.querySelector('.add');
+console.log(addFilter);
 
 function App() {
   const [stays, setStays] = (0, _react.useState)([]);
   const [cities, setCities] = (0, _react.useState)(''); // search filter
 
   const [titles, setTitles] = (0, _react.useState)('');
-  const [types, setTypes] = (0, _react.useState)(""); // const [maxNumberGuests, setMaxGuests] = useState('');
+  const [types, setTypes] = (0, _react.useState)("");
+  const [maxNumberGuests, setMaxGuests] = (0, _react.useState)('');
 
   function fetchStays() {
     const res = _stays.default;
@@ -28521,17 +28524,18 @@ function App() {
     console.log(e.target.value);
     setCities(e.target.value);
     setTitles(e.target.value);
-    setTypes(e.target.value); // setMaxGuests(e.target.value);
+    setTypes(e.target.value);
+    setMaxGuests(e.target.value);
   }
 
   select.addEventListener('change', filterCity);
   input.addEventListener('keyup', filterCity);
+  addFilter.addEventListener('change', filterCity);
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Stays in Finland"), /*#__PURE__*/_react.default.createElement("p", {
     className: "length"
   })), /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
-  }, stays.filter(stay => stay.city.toLowerCase().includes(cities.toLowerCase()) || stay.title.toLowerCase().includes(titles.toLowerCase()) || stay.type.toLowerCase().includes(types.toLowerCase()) // || stay.maxGuests.toLowerCase().includes(maxNumberGuests.toLowerCase())
-  ).map((stay, i) => /*#__PURE__*/_react.default.createElement(_WindBnb.default, {
+  }, stays.filter(stay => stay.city.toLowerCase().includes(cities.toLowerCase()) || stay.title.toLowerCase().includes(titles.toLowerCase()) || stay.type.toLowerCase().includes(types.toLowerCase()) || stay.maxGuests >= maxNumberGuests).map((stay, i) => /*#__PURE__*/_react.default.createElement(_WindBnb.default, {
     beds: stay.beds,
     key: stay.photo,
     photo: stay.photo,
@@ -28588,7 +28592,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65405" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50332" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

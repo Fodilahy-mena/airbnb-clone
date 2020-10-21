@@ -5,6 +5,8 @@ console.log(StaysData)
 
 const input = document.querySelector('.search');
 const select = document.querySelector('.filter');
+const addFilter = document.querySelector('.add');
+console.log(addFilter);
 
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
     // search filter
     const [titles, setTitles] = useState('');
     const [types, setTypes] = useState("");
-    // const [maxNumberGuests, setMaxGuests] = useState('');
+    const [maxNumberGuests, setMaxGuests] = useState('');
 
     function fetchStays() {
         const res = StaysData;
@@ -31,10 +33,11 @@ function App() {
         setCities(e.target.value);
         setTitles(e.target.value);
         setTypes(e.target.value);
-        // setMaxGuests(e.target.value);
+        setMaxGuests(e.target.value);
     }
     select.addEventListener('change', filterCity);
     input.addEventListener('keyup', filterCity)
+    addFilter.addEventListener('change', filterCity);
     return (
         <>
         <header>
@@ -45,7 +48,7 @@ function App() {
             {stays.filter(stay => stay.city.toLowerCase().includes(cities.toLowerCase()) 
             || stay.title.toLowerCase().includes(titles.toLowerCase())
             || stay.type.toLowerCase().includes(types.toLowerCase()) 
-            // || stay.maxGuests.toLowerCase().includes(maxNumberGuests.toLowerCase())
+            || stay.maxGuests >= maxNumberGuests
             )
             .map((stay, i)=> (
             <WindBnb 
