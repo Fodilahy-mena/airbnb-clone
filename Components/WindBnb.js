@@ -13,7 +13,7 @@ function WindBnb({
     length}) {
     const itemLength = document.querySelector('.length');
     itemLength.innerHTML = length;
-    // console.log(JSON.stringify(maxGuests));
+        
     return (
         <div className="bnb--card">
             <img 

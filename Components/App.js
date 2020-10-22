@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import WindBnb from './WindBnb'
 import StaysData from '../stays.json'
-console.log(StaysData)
+console.log(StaysData);
 
 const input = document.querySelector('.search');
 const select = document.querySelector('.filter');
 const addFilter = document.querySelector('.add');
-console.log(addFilter);
-
+const valueOfGuest = document.querySelector('.add');
+console.log("value",valueOfGuest.value)
 
 function App() {
     const [stays, setStays] = useState([]);
@@ -34,7 +34,9 @@ function App() {
         setTitles(e.target.value);
         setTypes(e.target.value);
         setMaxGuests(e.target.value);
+        
     }
+
     select.addEventListener('change', filterCity);
     input.addEventListener('keyup', filterCity)
     addFilter.addEventListener('change', filterCity);
