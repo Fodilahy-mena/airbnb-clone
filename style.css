@@ -213,7 +213,7 @@ article {
 /* Popup */
 
 .popup {
-	background: hsla(0, 0%, 30%, 0.5);
+	background: hsla(0, 9%, 98%, 0.014);
 	position: fixed;
 	height: 100%;
 	width: 100%;
@@ -223,7 +223,8 @@ article {
 	justify-content: center;
 	align-items: baseline;
 	pointer-events: none;
-	opacity: 0;
+	transform: translateY(-100%);
+    transition: transform 0.3s;
 }
 
 .popup > div {
@@ -243,8 +244,8 @@ article {
     justify-content: space-between;
 } */
 
-.popup.open {
-	opacity: 1;
+.popup.show {
+	transform: translateY(0);
 	pointer-events: all;
 }
 

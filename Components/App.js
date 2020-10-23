@@ -6,17 +6,21 @@ console.log(StaysData);
 const input = document.querySelector('.search');
 const select = document.querySelector('.filter');
 const addFilter = document.querySelector('.add');
-const valueOfGuest = document.querySelector('.add');
-console.log("value",valueOfGuest.value)
+// const valueOfGuest = document.querySelector('.add');
+
+const selectGuest = document.querySelector('.select--guest');
+// console.log("value",valueOfGuest.value)
 
 function App() {
     const [stays, setStays] = useState([]);
     const [cities, setCities] = useState('');
+    
 
     // search filter
     const [titles, setTitles] = useState('');
     const [types, setTypes] = useState("");
     const [maxNumberGuests, setMaxGuests] = useState('');
+    const [selectNumbGuest , setSelectNumbGuest] = useState('');
 
     function fetchStays() {
         const res = StaysData;
@@ -34,12 +38,15 @@ function App() {
         setTitles(e.target.value);
         setTypes(e.target.value);
         setMaxGuests(e.target.value);
+        setSelectNumbGuest(e.target.value);
+        // console.log(setSelectNumbGuest(e.target.value))
         
     }
 
     select.addEventListener('change', filterCity);
     input.addEventListener('keyup', filterCity)
     addFilter.addEventListener('change', filterCity);
+    // selectGuest.addEventListener('change', filterCity);
     return (
         <>
         <header>

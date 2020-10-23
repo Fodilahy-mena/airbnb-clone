@@ -28497,9 +28497,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 console.log(_stays.default);
 const input = document.querySelector('.search');
 const select = document.querySelector('.filter');
-const addFilter = document.querySelector('.add');
-const valueOfGuest = document.querySelector('.add');
-console.log("value", valueOfGuest.value);
+const addFilter = document.querySelector('.add'); // const valueOfGuest = document.querySelector('.add');
+
+const selectGuest = document.querySelector('.select--guest'); // console.log("value",valueOfGuest.value)
 
 function App() {
   const [stays, setStays] = (0, _react.useState)([]);
@@ -28508,6 +28508,7 @@ function App() {
   const [titles, setTitles] = (0, _react.useState)('');
   const [types, setTypes] = (0, _react.useState)("");
   const [maxNumberGuests, setMaxGuests] = (0, _react.useState)('');
+  const [selectNumbGuest, setSelectNumbGuest] = (0, _react.useState)('');
 
   function fetchStays() {
     const res = _stays.default;
@@ -28526,11 +28527,13 @@ function App() {
     setTitles(e.target.value);
     setTypes(e.target.value);
     setMaxGuests(e.target.value);
+    setSelectNumbGuest(e.target.value); // console.log(setSelectNumbGuest(e.target.value))
   }
 
   select.addEventListener('change', filterCity);
   input.addEventListener('keyup', filterCity);
-  addFilter.addEventListener('change', filterCity);
+  addFilter.addEventListener('change', filterCity); // selectGuest.addEventListener('change', filterCity);
+
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Stays in Finland"), /*#__PURE__*/_react.default.createElement("p", {
     className: "length"
   })), /*#__PURE__*/_react.default.createElement("div", {
@@ -28560,13 +28563,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function Popup() {
   const popupFilterBnb = document.querySelector('.popup');
   popupFilterBnb.classList.add('open');
+  const [countAdults, setAdults] = (0, _react.useState)(0);
+  const [countChildren, setChildren] = (0, _react.useState)(0);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "outer--filter"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -28589,16 +28596,25 @@ function Popup() {
   }, "Oulu"))), /*#__PURE__*/_react.default.createElement("div", {
     className: "filter--card"
   }, /*#__PURE__*/_react.default.createElement("input", {
-    id: "",
+    id: "addNumberOfGuests",
+    value: countAdults + countChildren,
     className: "select--guest",
     type: "button"
   }), /*#__PURE__*/_react.default.createElement("nav", {
     className: "option displayNone"
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("strong", null, "Adults"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("span", null, "Ages 13 or above"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
     className: "button--parent"
-  }, /*#__PURE__*/_react.default.createElement("button", null, "+"), /*#__PURE__*/_react.default.createElement("h4", null, "0"), /*#__PURE__*/_react.default.createElement("button", null, "-"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("strong", null, "Children"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("span", null, "Ages 2-12"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: () => setAdults(countAdults + 1)
+  }, "+"), /*#__PURE__*/_react.default.createElement("h4", null, countAdults), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: () => setAdults(countAdults - 1)
+  }, "-"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("strong", null, "Children"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("span", null, "Ages 2-12"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
     className: "button--parent"
-  }, /*#__PURE__*/_react.default.createElement("button", null, "+"), /*#__PURE__*/_react.default.createElement("h4", null, "0"), /*#__PURE__*/_react.default.createElement("button", null, "-"))))), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: () => setChildren(countChildren + 1)
+  }, "+"), /*#__PURE__*/_react.default.createElement("h4", null, countChildren), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: () => setChildren(countChildren - 1)
+  }, "-"))))), /*#__PURE__*/_react.default.createElement("div", {
     className: "filter--card"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "filter--search"
@@ -28625,12 +28641,14 @@ var _popupComponent = _interopRequireDefault(require("./Components/popupComponen
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const addFilter = document.querySelector('.add');
+const popupFilterBnb = document.querySelector('.popup');
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root'));
 
-function filters() {
-  _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_popupComponent.default, null), document.getElementById('popup'));
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_popupComponent.default, null), document.getElementById('popup'));
 
+function filters() {
+  popupFilterBnb.classList.add('show');
   const allCards = document.querySelectorAll('.inner--filter');
   const displayedNones = document.querySelectorAll('.option');
   console.log(allCards);
@@ -28645,19 +28663,18 @@ function filters() {
 }
 
 addFilter.addEventListener('click', filters);
-const popupFilterBnb = document.querySelector('.popup');
 
 const handleClick = e => {
   const isOutside = !e.target.closest('.outer--filter');
 
   if (isOutside) {
-    popupFilterBnb.classList.remove('open');
+    popupFilterBnb.classList.remove('show');
   }
 };
 
 const handleEscape = e => {
   if (e.key === 'Escape') {
-    popupFilterBnb.remove('open');
+    popupFilterBnb.remove('show');
   }
 };
 
@@ -28691,7 +28708,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62814" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63557" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

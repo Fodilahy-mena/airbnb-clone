@@ -3,10 +3,13 @@ import ReactDom from 'react-dom'
 import App from './Components/App'
 import Popup from './Components/popupComponent'
 const addFilter = document.querySelector('.add');
+const popupFilterBnb = document.querySelector('.popup');
+
 ReactDom.render(<App/>, document.getElementById('root'));
+ReactDom.render(<Popup/>, document.getElementById('popup'));
 
 function filters() {
-    ReactDom.render(<Popup/>, document.getElementById('popup'));
+    popupFilterBnb.classList.add('show');
     const allCards = document.querySelectorAll('.inner--filter');
         const displayedNones = document.querySelectorAll('.option');
         console.log(allCards)
@@ -22,17 +25,17 @@ function filters() {
         
 }
 addFilter.addEventListener('click', filters);
-const popupFilterBnb = document.querySelector('.popup');
+
 const handleClick = e => {
 	const isOutside = !e.target.closest('.outer--filter');
 	if (isOutside) {
-		popupFilterBnb.classList.remove('open');
+		popupFilterBnb.classList.remove('show');
 	}
 };
 
 const handleEscape = e => {
 	if (e.key === 'Escape') {
-		popupFilterBnb.remove('open');
+		popupFilterBnb.remove('show');
 	}
 };
 

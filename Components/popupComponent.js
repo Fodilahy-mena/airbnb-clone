@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Popup() {
     const popupFilterBnb = document.querySelector('.popup');
     popupFilterBnb.classList.add('open');
+
+    const [ countAdults, setAdults ] = useState(0);
+    const [ countChildren, setChildren ] = useState(0);
     return (
         <div className="outer--filter"> 
             <div className="inner--filter">
@@ -16,7 +19,7 @@ function Popup() {
                     </nav>
                 </div>
                 <div className="filter--card">
-                    <input id="" className="select--guest" type="button"/>
+                    <input id="addNumberOfGuests" value={countAdults + countChildren} className="select--guest" type="button"/>
                     <nav className="option displayNone">
                         <div>
                             <strong>Adults</strong>
@@ -24,9 +27,9 @@ function Popup() {
                             <span>Ages 13 or above</span>
                             <br/>
                             <div className="button--parent">
-                                <button>+</button>
-                                    <h4>0</h4>
-                                <button>-</button>
+                                <button onClick={() => setAdults(countAdults + 1)}>+</button>
+                                <h4>{countAdults}</h4>
+                                <button onClick={() => setAdults(countAdults - 1)}>-</button>
                             </div>
                         </div>
                         <div>
@@ -35,9 +38,9 @@ function Popup() {
                             <span>Ages 2-12</span>
                             <br/>
                             <div className="button--parent">
-                                <button>+</button>
-                                    <h4>0</h4>
-                                <button>-</button>
+                                <button onClick={() => setChildren(countChildren + 1)}>+</button>
+                                <h4>{countChildren}</h4>
+                                <button onClick={() => setChildren(countChildren - 1)}>-</button>
                             </div>
                         </div>
                     </nav>
