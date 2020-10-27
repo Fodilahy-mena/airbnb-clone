@@ -28499,16 +28499,15 @@ const input = document.querySelector('.search');
 const select = document.querySelector('.filter');
 const addFilter = document.querySelector('.add'); // const valueOfGuest = document.querySelector('.add');
 
-const selectGuest = document.querySelector('.select--guest'); // console.log("value",valueOfGuest.value)
-
-function App() {
+function App({
+  handleSubmit
+}) {
   const [stays, setStays] = (0, _react.useState)([]);
   const [cities, setCities] = (0, _react.useState)(''); // search filter
 
   const [titles, setTitles] = (0, _react.useState)('');
   const [types, setTypes] = (0, _react.useState)("");
-  const [maxNumberGuests, setMaxGuests] = (0, _react.useState)('');
-  const [selectNumbGuest, setSelectNumbGuest] = (0, _react.useState)('');
+  const [maxNumberGuests, setMaxGuests] = (0, _react.useState)(''); // console.log(handleSubmit())
 
   function fetchStays() {
     const res = _stays.default;
@@ -28527,13 +28526,11 @@ function App() {
     setTitles(e.target.value);
     setTypes(e.target.value);
     setMaxGuests(e.target.value);
-    setSelectNumbGuest(e.target.value); // console.log(setSelectNumbGuest(e.target.value))
   }
 
   select.addEventListener('change', filterCity);
   input.addEventListener('keyup', filterCity);
-  addFilter.addEventListener('change', filterCity); // selectGuest.addEventListener('change', filterCity);
-
+  addFilter.addEventListener('change', filterCity);
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("h1", null, "Stays in Finland"), /*#__PURE__*/_react.default.createElement("p", {
     className: "length"
   })), /*#__PURE__*/_react.default.createElement("div", {
@@ -28574,10 +28571,22 @@ function Popup() {
   popupFilterBnb.classList.add('open');
   const [countAdults, setAdults] = (0, _react.useState)(0);
   const [countChildren, setChildren] = (0, _react.useState)(0);
+  let [filterNumberOfGuest, setFilterNumberOfGuest] = (0, _react.useState)(0);
+  filterNumberOfGuest = countChildren + countAdults;
+
+  function handleSubmit(e) {
+    e.preventDefault(); // setFilterNumberOfGuest
+    // let combination = countChildren + countAdults
+
+    setFilterNumberOfGuest(filterNumberOfGuest);
+    console.log("submited", filterNumberOfGuest);
+  }
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "outer--filter"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "inner--filter"
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    className: "inner--filter",
+    onSubmit: handleSubmit
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "filter--card"
   }, /*#__PURE__*/_react.default.createElement("input", {
@@ -28597,7 +28606,8 @@ function Popup() {
     className: "filter--card"
   }, /*#__PURE__*/_react.default.createElement("input", {
     id: "addNumberOfGuests",
-    value: countAdults + countChildren,
+    value: filterNumberOfGuest,
+    onChange: () => setFilterNumberOfGuest(),
     className: "select--guest",
     type: "button"
   }), /*#__PURE__*/_react.default.createElement("nav", {
@@ -28605,14 +28615,18 @@ function Popup() {
   }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("strong", null, "Adults"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("span", null, "Ages 13 or above"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
     className: "button--parent"
   }, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
     onClick: () => setAdults(countAdults + 1)
   }, "+"), /*#__PURE__*/_react.default.createElement("h4", null, countAdults), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
     onClick: () => setAdults(countAdults - 1)
   }, "-"))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("strong", null, "Children"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("span", null, "Ages 2-12"), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("div", {
     className: "button--parent"
   }, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
     onClick: () => setChildren(countChildren + 1)
   }, "+"), /*#__PURE__*/_react.default.createElement("h4", null, countChildren), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
     onClick: () => setChildren(countChildren - 1)
   }, "-"))))), /*#__PURE__*/_react.default.createElement("div", {
     className: "filter--card"
@@ -28620,7 +28634,8 @@ function Popup() {
     className: "filter--search"
   }, /*#__PURE__*/_react.default.createElement("input", {
     className: "add",
-    type: "search",
+    type: "submit",
+    value: "Search",
     placeholder: "Search"
   })))));
 }
@@ -28708,7 +28723,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63557" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51966" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

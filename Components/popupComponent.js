@@ -6,9 +6,18 @@ function Popup() {
 
     const [ countAdults, setAdults ] = useState(0);
     const [ countChildren, setChildren ] = useState(0);
+    let [filterNumberOfGuest, setFilterNumberOfGuest] = useState(0);
+    filterNumberOfGuest = countChildren + countAdults;
+    function handleSubmit(e) {
+        e.preventDefault();
+        // setFilterNumberOfGuest
+        // let combination = countChildren + countAdults
+        setFilterNumberOfGuest(filterNumberOfGuest);
+        console.log("submited", filterNumberOfGuest)
+    }
     return (
         <div className="outer--filter"> 
-            <div className="inner--filter">
+            <form className="inner--filter" onSubmit={handleSubmit}>
                 <div className="filter--card">
                     <input className="select--city" type="button"/>
                     <nav className="option displayNone">
@@ -19,7 +28,10 @@ function Popup() {
                     </nav>
                 </div>
                 <div className="filter--card">
-                    <input id="addNumberOfGuests" value={countAdults + countChildren} className="select--guest" type="button"/>
+                    <input id="addNumberOfGuests" 
+                    value={filterNumberOfGuest}
+                    onChange={() => setFilterNumberOfGuest()}
+                    className="select--guest" type="button"/>
                     <nav className="option displayNone">
                         <div>
                             <strong>Adults</strong>
@@ -27,9 +39,9 @@ function Popup() {
                             <span>Ages 13 or above</span>
                             <br/>
                             <div className="button--parent">
-                                <button onClick={() => setAdults(countAdults + 1)}>+</button>
+                                <button type="button" onClick={() => setAdults(countAdults + 1)}>+</button>
                                 <h4>{countAdults}</h4>
-                                <button onClick={() => setAdults(countAdults - 1)}>-</button>
+                                <button  type="button" onClick={() => setAdults(countAdults - 1)}>-</button>
                             </div>
                         </div>
                         <div>
@@ -38,19 +50,19 @@ function Popup() {
                             <span>Ages 2-12</span>
                             <br/>
                             <div className="button--parent">
-                                <button onClick={() => setChildren(countChildren + 1)}>+</button>
+                                <button  type="button" onClick={() => setChildren(countChildren + 1)}>+</button>
                                 <h4>{countChildren}</h4>
-                                <button onClick={() => setChildren(countChildren - 1)}>-</button>
+                                <button  type="button" onClick={() => setChildren(countChildren - 1)}>-</button>
                             </div>
                         </div>
                     </nav>
                 </div>
                 <div className="filter--card">
                     <div className="filter--search">
-                        <input className='add' type="search" placeholder="Search"/>
+                        <input className='add' type="submit" value="Search" placeholder="Search"/>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     )
 }
