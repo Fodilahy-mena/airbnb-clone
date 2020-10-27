@@ -8,7 +8,7 @@ const select = document.querySelector('.filter');
 const addFilter = document.querySelector('.add');
 // const valueOfGuest = document.querySelector('.add');
 
-function App({handleSubmit}) {
+function App() {
     const [stays, setStays] = useState([]);
     const [cities, setCities] = useState('');
     // search filter

@@ -12,8 +12,11 @@ function Popup() {
         e.preventDefault();
         // setFilterNumberOfGuest
         // let combination = countChildren + countAdults
+
         setFilterNumberOfGuest(filterNumberOfGuest);
         console.log("submited", filterNumberOfGuest)
+        const val = document.querySelector('#addNumberOfGuests');
+        console.log(val.value);
     }
     return (
         <div className="outer--filter"> 

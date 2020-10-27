@@ -28499,9 +28499,7 @@ const input = document.querySelector('.search');
 const select = document.querySelector('.filter');
 const addFilter = document.querySelector('.add'); // const valueOfGuest = document.querySelector('.add');
 
-function App({
-  handleSubmit
-}) {
+function App() {
   const [stays, setStays] = (0, _react.useState)([]);
   const [cities, setCities] = (0, _react.useState)(''); // search filter
 
@@ -28580,6 +28578,8 @@ function Popup() {
 
     setFilterNumberOfGuest(filterNumberOfGuest);
     console.log("submited", filterNumberOfGuest);
+    const val = document.querySelector('#addNumberOfGuests');
+    console.log(val.value);
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -28723,7 +28723,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51966" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49742" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
