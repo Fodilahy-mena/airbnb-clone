@@ -15,6 +15,10 @@ function App() {
     const [titles, setTitles] = useState('');
     const [types, setTypes] = useState("");
     const [maxNumberGuests, setMaxGuests] = useState('');
+    const [guestFilter, setGuestFilter] = useState({
+        adults: 0,
+        children: 0,
+    })
     // console.log(handleSubmit())
 
     function fetchStays() {

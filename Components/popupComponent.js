@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Popup() {
+function Popup({guestFilter, setGuestFilter}) {
     const popupFilterBnb = document.querySelector('.popup');
     popupFilterBnb.classList.add('open');
 
@@ -18,6 +18,25 @@ function Popup() {
         const val = document.querySelector('#addNumberOfGuests');
         console.log(val.value);
     }
+    // function handleAdultGuest() {
+    //     if(!guestFilter.adults < 0) {
+    //         setGuestFilter({
+    //             adults: guestFilter.adults + 1
+    //         });
+    //     } else {
+    //         return;
+    //     }
+    // }
+
+    // function handleChildrenGuest() {
+    //     if(!guestFilter.children < 0) {
+    //         setGuestFilter({
+    //             children: guestFilter.children + 1
+    //         })
+    //     } else {
+    //         return;
+    //     }
+    // }
     return (
         <div className="outer--filter"> 
             <form className="inner--filter" onSubmit={handleSubmit}>
